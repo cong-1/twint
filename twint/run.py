@@ -393,7 +393,7 @@ def Lookup(config):
         storage.panda._autoget("user")
 
 
-def LookupAsync(config):
+async def LookupAsync(config):
     logme.debug(__name__ + ':Lookup')
     config.Profile = False
     config.Lookup = True
