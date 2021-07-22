@@ -25,6 +25,22 @@ def User(ur):
     _usr = user()
     _usr.id = ur['data']['user']['rest_id']
     if 'legacy' not in ur['data']['user']:
+        _usr.name = None
+        _usr.username = None
+        _usr.bio = None
+        _usr.location = None
+        _usr.url = None
+        _usr.join_date = None
+        _usr.join_time = None
+        _usr.tweets = None
+        _usr.following = None
+        _usr.followers = None
+        _usr.likes = None
+        _usr.media_count = None
+        _usr.is_private = None
+        _usr.is_verified = None
+        _usr.avatar = None
+        _usr.background_image = None
     	return _usr
     _usr.name = ur['data']['user']['legacy']['name']
     _usr.username = ur['data']['user']['legacy']['screen_name']
