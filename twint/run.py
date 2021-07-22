@@ -329,6 +329,11 @@ def run(config, callback=None):
     get_event_loop().run_until_complete(Twint(config).main(callback))
 
 
+def run_async(config, callback=None):
+    logme.debug(__name__ + ':run_async')
+    await Twint(config).main(callback)
+
+
 def Favorites(config):
     logme.debug(__name__ + ':Favorites')
     config.Favorites = True
