@@ -173,8 +173,9 @@ async def Tweets(tweets, config, conn):
 async def Users(u, config, conn):
     logme.debug(__name__ + ':User')
     global users_list
-
+    
     user = User(u)
+    
     output = format.User(config.Format, user)
 
     if config.Database:

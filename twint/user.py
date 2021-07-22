@@ -24,6 +24,8 @@ def User(ur):
         raise KeyError(msg)
     _usr = user()
     _usr.id = ur['data']['user']['rest_id']
+    if 'legacy' not in ur['data']['user']:
+    	return _usr
     _usr.name = ur['data']['user']['legacy']['name']
     _usr.username = ur['data']['user']['legacy']['screen_name']
     _usr.bio = ur['data']['user']['legacy']['description']
