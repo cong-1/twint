@@ -329,11 +329,6 @@ def run(config, callback=None):
     get_event_loop().run_until_complete(Twint(config).main(callback))
 
 
-async def run_async(config, callback=None):
-    logme.debug(__name__ + ':run_async')
-    await Twint(config).main(callback)
-
-
 def Favorites(config):
     logme.debug(__name__ + ':Favorites')
     config.Favorites = True
@@ -389,19 +384,6 @@ def Lookup(config):
     config.Followers = False
     config.TwitterSearch = False
     run(config)
-    if config.Pandas_au:
-        storage.panda._autoget("user")
-
-
-async def LookupAsync(config):
-    logme.debug(__name__ + ':Lookup')
-    config.Profile = False
-    config.Lookup = True
-    config.Favorites = False
-    config.FOllowing = False
-    config.Followers = False
-    config.TwitterSearch = False
-    await run_async(config)
     if config.Pandas_au:
         storage.panda._autoget("user")
 
