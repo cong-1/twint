@@ -23,8 +23,15 @@ def User(ur):
         logme.fatal(msg)
         raise KeyError(msg)
     _usr = user()
-    _usr.id = ur['data']['user']['rest_id']
+    _usr.id = None
+    _usr.deleted = False
+    _usr.suspension = False
+    if 'user' in ur['data']:
+        _usr.id = ur['data']['user']['rest_id']
+    else:
+        _usr.deleted = True
     if 'legacy' not in ur['data']['user']:
+        _usr.suspension = True
         _usr.name = None
         _usr.username = None
         _usr.bio = None
