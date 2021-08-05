@@ -6,7 +6,24 @@ class user:
     type = "user"
 
     def __init__(self):
-        pass
+        self.id = None
+        self.suspension = False
+        self.name = None
+        self.username = None
+        self.bio = None
+        self.location = None
+        self.url = None
+        self.join_date = None
+        self.join_time = None
+        self.tweets = None
+        self.following = None
+        self.followers = None
+        self.likes = None
+        self.media_count = None
+        self.is_private = None
+        self.is_verified = None
+        self.avatar = None
+        self.background_image = None
 
 
 User_formats = {
@@ -23,31 +40,11 @@ def User(ur):
         logme.fatal(msg)
         raise KeyError(msg)
     _usr = user()
-    _usr.id = None
-    _usr.deleted = False
-    _usr.suspension = False
-    if 'user' in ur['data']:
-        _usr.id = ur['data']['user']['rest_id']
-    else:
-        _usr.deleted = True
+    if 'user' not in ur['data']:
+        return _usr
+    _usr.id = ur['data']['user']['rest_id']
     if 'legacy' not in ur['data']['user']:
         _usr.suspension = True
-        _usr.name = None
-        _usr.username = None
-        _usr.bio = None
-        _usr.location = None
-        _usr.url = None
-        _usr.join_date = None
-        _usr.join_time = None
-        _usr.tweets = None
-        _usr.following = None
-        _usr.followers = None
-        _usr.likes = None
-        _usr.media_count = None
-        _usr.is_private = None
-        _usr.is_verified = None
-        _usr.avatar = None
-        _usr.background_image = None
         return _usr
     _usr.name = ur['data']['user']['legacy']['name']
     _usr.username = ur['data']['user']['legacy']['screen_name']
